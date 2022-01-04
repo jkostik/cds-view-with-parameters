@@ -1,0 +1,16 @@
+*&---------------------------------------------------------------------*
+*& Report zjk_cds_view_flueg
+*&---------------------------------------------------------------------*
+*& 
+*&---------------------------------------------------------------------*
+
+REPORT zjk_cds_view_flueg.
+
+DATA:
+    lc_current_date TYPE D.
+lc_current_date = SY-datum.
+
+SELECT * FROM z_month_exercise_1_jk( p_mydate = @lc_current_date ) INTO TABLE @DATA(lt_flueg_data).
+
+cl_demo_output=>write( lc_current_date ).
+cl_demo_output=>display( lt_flueg_data ).
